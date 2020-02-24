@@ -15,10 +15,18 @@ export default class PortfolioContainer extends Component {
         {title: "placeholder 4"}
       ]
     }
+
+    this.handlePageTitleUpdate = this.handlePageTitleUpdate.bind(this)
   }
 
   portfolioItems () {
     return this.state.data.map(item => <PortfolioItem title={item.title} url='placeholder url' />)
+  }
+
+  handlePageTitleUpdate () {
+    this.setState({
+      pageTitle: "AHHHHHHHHHHHHHHHHHHHH Im trapped in a webbage"
+    })
   }
   render() {
     return (
@@ -31,6 +39,9 @@ export default class PortfolioContainer extends Component {
           Portfolio Items go here...Updated
         </h2>
         {this.portfolioItems()}
+
+        <hr/>
+        <button onClick={this.handlePageTitleUpdate}>Change title</button>
       </div>
     )
   }
