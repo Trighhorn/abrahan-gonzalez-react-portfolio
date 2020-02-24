@@ -13,7 +13,7 @@ export default class NavigationContainer extends Component {
         <button>Blog</button>
         <button>About</button>
         <button>Contact</button>
-        {0 ? <button>Add Blog</button> : null}
+        {true ? <button>Add Blog</button> : null}
       </div>
     )
   }
