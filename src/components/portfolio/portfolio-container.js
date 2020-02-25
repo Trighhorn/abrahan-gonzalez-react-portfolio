@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 
 import PortfolioItem from './portfolio-item'
@@ -17,6 +18,7 @@ export default class PortfolioContainer extends Component {
       ]
     }
     this.handleFilter = this.handleFilter.bind(this)
+    this.getPortfolioItems = this.getPortfolioItems.bind(this);
 
   }
 
@@ -29,11 +31,23 @@ export default class PortfolioContainer extends Component {
     })
   }
 
+  getPortfolioItems() {
+    axios.get("https://abrahangonzalez.devcamp.space/portfolio/portfolio_items")
+    .then(response => {
+        console.log("response data", response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+
   portfolioItems () {
     return this.state.data.map(item => <PortfolioItem title={item.title} url={'placeholder'} slug={item.slug} />)
   }
 
   render() {
+    this.getPortfolioItems();
     if (this.state.isLoading) {
       return <div>Loading...</div>
     }
