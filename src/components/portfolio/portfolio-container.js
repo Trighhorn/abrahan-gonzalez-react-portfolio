@@ -10,10 +10,10 @@ export default class PortfolioContainer extends Component {
       pageTitle: "Welcome to my Portfolio",
       isLoading: false,
       data: [
-        {title: "Quip", catrgory: "eCommerce"}, 
-        {title: "Eventbrite", catrgory: "Scheduling"},
-        {title: "placeholder 3", catrgory: "Enterprise"},
-        {title: "placeholder 4", catrgory: "eCommerce"}
+        {title: "Quip", catrgory: "eCommerce", slug: 'quip'}, 
+        {title: "Eventbrite", catrgory: "Scheduling", slug: 'eventbrite'},
+        {title: "placeholder 3", catrgory: "Enterprise", slug: 'placeholder-3'},
+        {title: "placeholder 4", catrgory: "eCommerce", slug: 'placeholder-4'}
       ]
     }
     this.handleFilter = this.handleFilter.bind(this)
@@ -30,7 +30,7 @@ export default class PortfolioContainer extends Component {
   }
 
   portfolioItems () {
-    return this.state.data.map(item => <PortfolioItem title={item.title} url='placeholder url' />)
+    return this.state.data.map(item => <PortfolioItem title={item.title} url={'placeholder'} slug={item.slug} />)
   }
 
   render() {
