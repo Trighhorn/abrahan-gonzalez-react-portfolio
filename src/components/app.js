@@ -31,6 +31,7 @@ export default class App extends Component {
       loggedInStatus: 'NOT_LOGGED_IN'
     })
   }
+  
 
 
   render() {
@@ -39,7 +40,7 @@ export default class App extends Component {
 
       <Router>
         <div>
-          <NavigationContainer />
+          <NavigationContainer loggedInStatus={this.state.loggedInStatus} />
           <h2>{this.state.loggedInStatus}</h2>
 
           <Switch>
