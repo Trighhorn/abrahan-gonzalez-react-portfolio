@@ -26,6 +26,7 @@ handleChange(event) {
 
 handleSubmit(event) {
   console.log("Handle submit", event);
+  event.preventDefault();
 }
 
   render() {
