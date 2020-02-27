@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 import PortfolioDetail from './portfolio/portfolio-detail'
+import Auth from './pages/auth'
 import NavigationContainer from "./navigation/navigation-container"
 import Home from "./pages/home"
 import About from "./pages/about"
@@ -20,6 +21,7 @@ export default class App extends Component {
 
           <Switch>
             <Route exact path="/" component={Home}></Route>
+            <Route path="/auth" component={Auth}></Route>
             <Route path="/blog" component={Blog}></Route>
             <Route path="/about-me" component={About}></Route>
             <Route path="/contact-me" component={Contact}></Route>
