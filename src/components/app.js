@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import axios from 'axios'
 
 import PortfolioDetail from './portfolio/portfolio-detail'
+import PortfolioManager from './pages/portfolio-manager'
 import Auth from './pages/auth'
 import NavigationContainer from "./navigation/navigation-container"
 import Home from "./pages/home"
@@ -70,7 +71,9 @@ export default class App extends Component {
   }
 
   authorizedPages() {
-    return [<Route path="/blog" component={Blog} />];
+    return [
+    <Route path="/portfolio-manager" component={PortfolioManager}/>
+  ];
   }
 
 
@@ -84,7 +87,6 @@ export default class App extends Component {
           loggedInStatus={this.state.loggedInStatus} 
           handleSuccessfulLogout={this.handleSuccessfulLogout}
           />
-          <h2>{this.state.loggedInStatus}</h2>
 
           <Switch>
             <Route exact path="/" component={Home} />
@@ -105,6 +107,7 @@ export default class App extends Component {
                 this.authorizedPages()
             ) : null}
             <Route exact path="/portfolio/:slug" component={PortfolioDetail}/>
+            <Route path="/blog" component={Blog} />
             <Route component={NoMatch} />
           </Switch>
         </div>
