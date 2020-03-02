@@ -80,19 +80,30 @@ export default class PortfolioForm extends Component {
 
             <select
             name='category'
-            placeholder='Portfolio Item Category'
             value={this.state.category}
             onChange={this.handleChange}
             >
-              {/* TODO update to languages */}
+              <option value="Python">Python</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="React">React</option>
+              <option value="Vue">Vue</option>
+              <option value="C++">C++</option>
+              <option value="C#">C#</option>
+              <option value="F#">F#</option>
+              <option value="PHP">PHP</option>
+              <option value="Laravel">Laravel</option>
+              <option value="GO">GO</option>
+              <option value="MongoDB">MongoDB</option>
+              <option value="SQL">SQL</option>
+              <option value="Redis">Redis</option>
+
               <option value="eCommerce">eCommerce</option>
               <option value="Scheduling">Scheduling</option>
               <option value="Enterprise">Enterprise</option>
             </select>
           </div>
           <div>
-            <input
-            type='text'
+            <textarea
             name='description'
             placeholder='Portfolio Item Description'
             value={this.state.description}
