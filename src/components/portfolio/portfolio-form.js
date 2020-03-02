@@ -96,6 +96,7 @@ export default class PortfolioForm extends Component {
               <option value="MongoDB">MongoDB</option>
               <option value="SQL">SQL</option>
               <option value="Redis">Redis</option>
+              <option value="Ruby">Ruby</option>
 
               <option value="eCommerce">eCommerce</option>
               <option value="Scheduling">Scheduling</option>
