@@ -30,7 +30,7 @@ export default class PortfolioForm extends Component {
   }
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
+    [event.target.name]: event.target.value
     })
   }
   handleSubmit(event) {
@@ -78,9 +78,11 @@ export default class PortfolioForm extends Component {
             onChange={this.handleChange}
             />
 
-            <select
+            <select 
+            // multiple="multiple"
             name='category'
             value={this.state.category}
+            // value={[this.state.category]}
             onChange={this.handleChange}
             >
               <option value="Python">Python</option>
