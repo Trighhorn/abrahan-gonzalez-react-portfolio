@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class PortfolioForm extends Component {
   constructor(props) {
@@ -20,11 +21,11 @@ export default class PortfolioForm extends Component {
   buildForm() {
     let formData = new FormData();
 
-    formData.append("portfoio_item[name]", this.state.name)
-    formData.append("portfoio_item[description]", this.state.description)
-    formData.append("portfoio_item[url]", this.state.url)
-    formData.append("portfoio_item[category]", this.state.category)
-    formData.append("portfoio_item[position]", this.state.position)
+    formData.append("portfolio_item[name]", this.state.name)
+    formData.append("portfolio_item[description]", this.state.description)
+    formData.append("portfolio_item[url]", this.state.url)
+    formData.append("portfolio_item[category]", this.state.category)
+    formData.append("portfolio_item[position]", this.state.position)
     return formData
   }
   handleChange(event) {
@@ -33,8 +34,18 @@ export default class PortfolioForm extends Component {
     })
   }
   handleSubmit(event) {
-    this.buildForm();
-    event.preventDefault();
+    axios.post(
+      // TODO Upate to have visual feedback on post
+        "https://abrahangonzalez.devcamp.space/portfolio/portfolio_items",
+        this.buildForm(),
+        { withCredentials: true }
+      ).then(response => {
+        console.log("response", response);
+      }).catch(error => {
+        console.log("portfolio form handle Submit error", error);
+      });
+
+      event.preventDefault();
   }
   render() { 
     return (
@@ -67,13 +78,17 @@ export default class PortfolioForm extends Component {
             onChange={this.handleChange}
             />
 
-            <input
-            type='text'
+            <select
             name='category'
             placeholder='Portfolio Item Category'
             value={this.state.category}
             onChange={this.handleChange}
-            />
+            >
+              {/* TODO update to languages */}
+              <option value="eCommerce">eCommerce</option>
+              <option value="Scheduling">Scheduling</option>
+              <option value="Enterprise">Enterprise</option>
+            </select>
           </div>
           <div>
             <input
