@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import DropzoneComponent from 'react-dropzone-component';
+
+import "../../../node_modules/react-dropzone-component/styles/filepicker.css"
+import "../../../node_modules/dropzone/dist/min/dropzone.min.css"
 
 export default class PortfolioForm extends Component {
   constructor(props) {
@@ -16,8 +20,25 @@ export default class PortfolioForm extends Component {
     }
     this.handleChange=this.handleChange.bind(this)
     this.handleSubmit=this.handleSubmit.bind(this)
+    this.componentConfig=this.componentConfig.bind(this)
+    this.djsConfig=this.djsConfig.bind(this)
+  }
+
+  componentConfig() {
+    return {
+      iconFiletypes: [".jpg", ".png"],
+      showFiletypeIcon: true,
+      postUrl: "https://httpbin.org/post"
+    }
   }
   
+  djsConfig() {
+    return {
+      addRemoveLinks: true,
+      maxFiles: 1
+    }
+  }
+
   buildForm() {
     let formData = new FormData();
 
@@ -99,6 +120,7 @@ export default class PortfolioForm extends Component {
               <option value="SQL">SQL</option>
               <option value="Redis">Redis</option>
               <option value="Ruby">Ruby</option>
+              <option value="Typescript">Typescript</option>
 
               <option value="eCommerce">eCommerce</option>
               <option value="Scheduling">Scheduling</option>
@@ -111,6 +133,12 @@ export default class PortfolioForm extends Component {
             placeholder='Portfolio Item Description'
             value={this.state.description}
             onChange={this.handleChange}
+            />
+          </div>
+          <div className="image-uploaders">
+            <DropzoneComponent 
+            config={this.componentConfig()}
+            djsconfig={this.djsConfig()}
             />
           </div>
           <div>
