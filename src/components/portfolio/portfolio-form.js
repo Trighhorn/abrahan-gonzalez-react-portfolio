@@ -16,13 +16,25 @@ export default class PortfolioForm extends Component {
     this.handleChange=this.handleChange.bind(this)
     this.handleSubmit=this.handleSubmit.bind(this)
   }
+  
+  buildForm() {
+    let formData = new FormData();
+
+    formData.append("portfoio_item[name]", this.state.name)
+    formData.append("portfoio_item[description]", this.state.description)
+    formData.append("portfoio_item[url]", this.state.url)
+    formData.append("portfoio_item[category]", this.state.category)
+    formData.append("portfoio_item[position]", this.state.position)
+    return formData
+  }
   handleChange(event) {
     this.setState({
-      [eevent.target.name]: event.target.value
+      [event.target.name]: event.target.value
     })
   }
   handleSubmit(event) {
-      event.preventDefault();
+    this.buildForm();
+    event.preventDefault();
   }
   render() { 
     return (
