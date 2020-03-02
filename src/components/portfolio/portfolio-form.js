@@ -138,7 +138,7 @@ export default class PortfolioForm extends Component {
           <div className="image-uploaders">
             <DropzoneComponent 
             config={this.componentConfig()}
-            djsconfig={this.djsConfig()}
+            djsConfig={this.djsConfig()}
             />
           </div>
           <div>
