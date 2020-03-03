@@ -26,7 +26,7 @@ export default class PortfolioManager extends Component {
           return item.id !== portfolioItem.id;
         })
       })
-      
+
       return response.data;
     }).catch(error => {
       console.log("handleDeleteClick", error)
