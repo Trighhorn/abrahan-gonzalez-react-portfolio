@@ -4,6 +4,7 @@ import DropzoneComponent from 'react-dropzone-component';
 
 import "../../../node_modules/react-dropzone-component/styles/filepicker.css"
 import "../../../node_modules/dropzone/dist/min/dropzone.min.css"
+import PortfolioItem from './portfolio-item';
 
 export default class PortfolioForm extends Component {
   constructor(props) {
@@ -16,7 +17,10 @@ export default class PortfolioForm extends Component {
       url: '',
       thumb_image: '',
       banner_image: '',
-      logo: ''
+      logo: '',
+      editMode: false,
+      apiUrl: 'https://abrahangonzalez.devcamp.space/portfolio/portfolio_items',
+      apiAction: 'post'
     }
     this.handleChange=this.handleChange.bind(this)
     this.handleSubmit=this.handleSubmit.bind(this)
@@ -53,7 +57,10 @@ export default class PortfolioForm extends Component {
         description: description || "",
         category: category || "Python",
         position: position || "",
-        url: url || ""
+        url: url || "",
+        editMode: true,
+        apiUrl: `https://abrahangonzalez.devcamp.space/portfolio/portfolio_items/${id}`,
+        apiAction: 'patch'
       })
     }
   }
@@ -119,11 +126,13 @@ export default class PortfolioForm extends Component {
     })
   }
   handleSubmit(event) {
-    axios.post(
-        "https://abrahangonzalez.devcamp.space/portfolio/portfolio_items",
-        this.buildForm(),
-        { withCredentials: true }
-      ).then(response => {
+    axios({
+      method: this.state.apiAction,
+      url: this.state.apiUrl,
+      data: this.buildForm(),
+      withCredentials: true
+    })
+    .then(response => {
         this.props.handleSuccessFormSubmission(response.data.portfolio_item)
 
         this.setState({
