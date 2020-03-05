@@ -21,4 +21,19 @@
     }
   }
 
+  .image-removal-link {
+    display: flex;
+    justify-content: center;
+    a{
+      font-weight: 900;
+      color: $charcoal;
+      cursor: pointer;
+      transition: 0.5s ease-in-out;
+
+      &:hover {
+        color: $warning;
+      }
+    }
+  }
+
 }
