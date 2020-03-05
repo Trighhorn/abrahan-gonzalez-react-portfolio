@@ -60,7 +60,10 @@ export default class PortfolioForm extends Component {
         url: url || "",
         editMode: true,
         apiUrl: `https://abrahangonzalez.devcamp.space/portfolio/portfolio_items/${id}`,
-        apiAction: "patch"
+        apiAction: "patch",
+        thumb_image: thumb_image_url || "",
+        banner_image: banner_image_url || "",
+        logo: logo_url || ""
       });
     }
   }
@@ -151,7 +154,8 @@ export default class PortfolioForm extends Component {
           banner_image: "",
           logo: "",
           editMode: false,
-          apiUrl: "https://abrahangonzalez.devcamp.space/portfolio/portfolio_items",
+          apiUrl:
+            "https://abrahangonzalez.devcamp.space/portfolio/portfolio_items",
           apiAction: "post"
         });
 
@@ -217,6 +221,7 @@ export default class PortfolioForm extends Component {
             <option value="Redis">Redis</option>
             <option value="Ruby">Ruby</option>
             <option value="Typescript">Typescript</option>
+            <option value="Express">Express</option>
 
             <option value="eCommerce">eCommerce</option>
             <option value="Scheduling">Scheduling</option>
@@ -232,14 +237,18 @@ export default class PortfolioForm extends Component {
           />
         </div>
         <div className="image-uploaders">
-          <DropzoneComponent
-            ref={this.thumbRef}
-            config={this.componentConfig()}
-            djsConfig={this.djsConfig()}
-            eventHandlers={this.handleThumbDrop()}
-          >
-            <div className="dz-message">Thumbnail image</div>
-          </DropzoneComponent>
+          {this.state.thumb_image && this.state.editMode ? (
+            <img src={this.state.thumb_image}/>
+          ) : (
+            <DropzoneComponent
+              ref={this.thumbRef}
+              config={this.componentConfig()}
+              djsConfig={this.djsConfig()}
+              eventHandlers={this.handleThumbDrop()}
+            >
+              <div className="dz-message">Thumbnail image</div>
+            </DropzoneComponent>
+          )}
           <DropzoneComponent
             ref={this.bannerRef}
             config={this.componentConfig()}
