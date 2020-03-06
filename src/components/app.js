@@ -12,6 +12,7 @@ import NavigationContainer from "./navigation/navigation-container"
 import Home from "./pages/home"
 import About from "./pages/about"
 import Blog from "./pages/blog"
+import BlogDetail from "./pages/blog-detail"
 import Contact from "./pages/contact"
 import NoMatch from "./pages/no-match"
 
@@ -113,6 +114,7 @@ export default class App extends Component {
             ) : null}
             <Route exact path="/portfolio/:slug" component={PortfolioDetail}/>
             <Route path="/blog" component={Blog} />
+            <Route path="/b/:slug" component={BlogDetail} />
             <Route component={NoMatch} />
           </Switch>
         </div>
