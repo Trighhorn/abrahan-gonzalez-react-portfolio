@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -11,7 +12,8 @@ export default class Blog extends Component {
     this.state = {
       blogItems: [],
       totalCount: 0,
-      currentPage: 0
+      currentPage: 0,
+      isLoading: true
     };
 
     this.getBlogItems = this.getBlogItems.bind(this);
@@ -32,7 +34,7 @@ export default class Blog extends Component {
   getBlogItems() {
     this.setState({
       currentPage: this.state.currentPage + 1
-    })
+    });
     axios
       .get("https://abrahangonzalez.devcamp.space/portfolio/portfolio_blogs", {
         withCredentials: true
@@ -40,7 +42,8 @@ export default class Blog extends Component {
       .then(response => {
         this.setState({
           blogItems: response.data.portfolio_blogs,
-          totalCount: response.data.meta.total_records
+          totalCount: response.data.meta.total_records,
+          isLoading: false
         });
       })
       .catch(error => {
@@ -60,6 +63,12 @@ export default class Blog extends Component {
     return (
       <div className="blog-container">
         <div className="content-container">{blogRecords}</div>
+
+        {this.state.isLoading ? (
+          <div className="content-loader">
+            <FontAwesomeIcon icon="slash" pulse />
+          </div>
+        ) : null}
       </div>
     );
   }
