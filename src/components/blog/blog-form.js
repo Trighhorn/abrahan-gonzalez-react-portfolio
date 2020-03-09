@@ -14,7 +14,9 @@ export default class BlogForm extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleRichTextEditorChange = this.handleRichTextEditorChange.bind(this);
+    this.handleRichTextEditorChange = this.handleRichTextEditorChange.bind(
+      this
+    );
   }
 
   handleRichTextEditorChange(content) {
@@ -91,7 +93,7 @@ export default class BlogForm extends Component {
         </div>
         <div className="one-column">
           <RichTextEditor
-            handleRichtexteditorChange={handleRichtexteditorChange}
+            handleRichTextEditorChange={this.handleRichTextEditorChange}
           />
         </div>
         <input
