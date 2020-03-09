@@ -1,13 +1,23 @@
 .nav-wrapper {
   display: flex;
   justify-content: space-between;
-  padding: 25px;
+  height: 73px;
+  align-items: center;
+
 
   .right-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: $mint;
+    color: $offwhite;
+    padding-left: 24px;
+    padding-right: 14px;
     a {
       margin-left: 15px;
       cursor: pointer;
-      color: $mint;
+      color: $offwhite;
       transition: 0.5s ease-in-out;
 
       &:hover {
@@ -19,7 +29,7 @@
 
   .left-side {
     display: flex;
-
+    margin-left: 24px;
   }
   .nav-link-wrapper {
     height: 22px;
