@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import RichTextEditor from "../forms/rich-text-editor";
+
 export default class BlogForm extends Component {
   constructor(props) {
     super(props);
@@ -54,7 +56,7 @@ export default class BlogForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className="blog-form-wrapper">
         <div className="two-column">
-          <input 
+          <input
             type="text"
             onChange={this.handleChange}
             name="title"
@@ -62,13 +64,14 @@ export default class BlogForm extends Component {
             value={this.state.title}
           />
 
-         <input
+          <input
             type="text"
             onChange={this.handleChange}
             name="blog_status"
             placeholder="Blog status"
             value={this.state.blog_status}
           />
+
           {/* <select
             name="blog_status"
             value={this.state.blog_status}
@@ -79,7 +82,15 @@ export default class BlogForm extends Component {
             <option value="Published">Published</option>
           </select> */}
         </div>
-          <input className="submit-btn" type="submit" value="Save" onSubmit={this.handleSubmit} />
+        <div className="one-column">
+          <RichTextEditor />
+        </div>
+        <input
+          className="submit-btn"
+          type="submit"
+          value="Save"
+          onSubmit={this.handleSubmit}
+        />
       </form>
     );
   }

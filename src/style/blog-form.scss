@@ -10,5 +10,9 @@
   .submit-btn{
     background-color: $mint;
     color: $offwhite;
+
+    &:hover {
+      background-color: $dark-mint;
+    }
   }
 }
