@@ -52,9 +52,12 @@ export default class BlogForm extends Component {
       this.setState({
         id: this.props.blog.id,
         title: this.props.blog.title,
-        featured_image: "",
-        apiUrl: "https://jordan.devcamp.space/portfolio/portfolio_blogs",
-        apiAction: "post"
+        blog_status: this.props.blog.blog_status,
+        content: this.props.blog.content,
+        apiUrl: `https://abrahangonzalez.devcamp.space/portfolio/portfolio_blogs/${
+          this.props.blog.id
+        }`,
+        apiAction: "patch"
       });
     }
   }
