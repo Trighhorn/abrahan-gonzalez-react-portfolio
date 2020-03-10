@@ -3,6 +3,8 @@ import axios from "axios";
 import ReactHtmlParser from "react-html-parser";
 
 import BlogFeaturedImage from "../blog/blog-featured-image";
+import BlogForm from "../blog/blog-form";
+
 
 export default class BlogDetail extends Component {
   constructor(props) {
@@ -10,8 +12,15 @@ export default class BlogDetail extends Component {
 
     this.state = {
       currentId: this.props.match.params.slug,
-      blogItem: {}
+      blogItem: {},
+      editMode: false
     };
+
+    this.handleEditCLick = this.handleEditCLick.bind(this)
+  }
+
+  handleEditCLick() {
+    this.setState({ editMode: true })
   }
 
   getBlogItem() {
@@ -43,14 +52,32 @@ export default class BlogDetail extends Component {
       blog_status
     } = this.state.blogItem;
 
-    return (
-      <div className="blog-container">
+    const contentManager = () => {
+      if (this.state.editMode) {
+        return <BlogForm editMode={this.state.editMode} blog={this.state.blogItem} />
+      } else {
+        return(
         <div className="content-container">
-          <h1>{title}</h1>
+          <h1 onClick={this.handleEditCLick}>{title}</h1>
           <BlogFeaturedImage img={featured_image_url} />
           <div className="content">{ReactHtmlParser(content)}</div>
         </div>
-      </div>
+        )
+      }
+    }
+
+    return (
+      <div className="blog-container">{contentManager()}</div>
+
+      // TODO IMPLEMENT THIS (button for edit)
+      // {this.props.loggedInStatus === "LOGGED_IN" ? (
+      //   <div className="edit-blog-link">
+      //     <a onClick={this.handleEditClick}>
+      //       Hello!
+      //       {/* <FontAwesomeIcon icon="plus-circle" /> */}
+      //     </a>
+      //   </div>
+      // ) : null}
     );
   }
 }
