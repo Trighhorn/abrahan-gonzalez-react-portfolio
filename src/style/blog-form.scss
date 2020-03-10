@@ -14,5 +14,10 @@
     &:hover {
       background-color: $dark-mint;
     }
+    .image-uploaders {
+      @include base-grid();
+      grid-template-columns: 200px;
+    }
   }
+
 }
