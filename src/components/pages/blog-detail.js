@@ -5,7 +5,6 @@ import ReactHtmlParser from "react-html-parser";
 import BlogFeaturedImage from "../blog/blog-featured-image";
 import BlogForm from "../blog/blog-form";
 
-
 export default class BlogDetail extends Component {
   constructor(props) {
     super(props);
@@ -16,8 +15,8 @@ export default class BlogDetail extends Component {
       editMode: false
     };
 
-    this.handleEditCLick = this.handleEditCLick.bind(this)
-    this.handleFeaturedImageDelete = this.handleFeaturedImageDelete.bind(this)
+    this.handleEditCLick = this.handleEditCLick.bind(this);
+    this.handleFeaturedImageDelete = this.handleFeaturedImageDelete.bind(this);
     this.handleUpdateFormSubmission = this.handleUpdateFormSubmission.bind(
       this
     );
@@ -28,27 +27,28 @@ export default class BlogDetail extends Component {
       blogItem: blog,
       editMode: false
     });
+  }
 
   handleFeaturedImageDelete() {
     this.setState({
       blogItem: {
         featured_image_url: ""
       }
-    })
+    });
   }
 
   handleEditCLick() {
-    this.setState({ editMode: true })
+    if (this.props.loggedInStatus === "LOGGED_IN") {
+      this.setState({ editMode: true });
+    }
   }
 
   getBlogItem() {
     axios
       .get(
-        `https://abrahangonzalez.devcamp.space/portfolio/portfolio_blogs/${
-          this.state.currentId
-        }`
+        `https://abrahangonzalez.devcamp.space/portfolio/portfolio_blogs/${this.state.currentId}`
       )
-      .then(response => { 
+      .then(response => {
         this.setState({
           blogItem: response.data.portfolio_blog
         });
@@ -73,23 +73,23 @@ export default class BlogDetail extends Component {
     const contentManager = () => {
       if (this.state.editMode) {
         return (
-          <BlogForm 
-            handleFeaturedImageDelete={this.handleFeaturedImageDelete} 
+          <BlogForm
+            handleFeaturedImageDelete={this.handleFeaturedImageDelete}
             handleUpdateFormSubmission={this.handleUpdateFormSubmission}
-            editMode={this.state.editMode} 
-            blog={this.state.blogItem} 
+            editMode={this.state.editMode}
+            blog={this.state.blogItem}
           />
-        )
+        );
       } else {
-        return(
-        <div className="content-container">
-          <h1 onClick={this.handleEditCLick}>{title}</h1>
-          <BlogFeaturedImage img={featured_image_url} />
-          <div className="content">{ReactHtmlParser(content)}</div>
-        </div>
-        )
+        return (
+          <div className="content-container">
+            <h1 onClick={this.handleEditCLick}>{title}</h1>
+            <BlogFeaturedImage img={featured_image_url} />
+            <div className="content">{ReactHtmlParser(content)}</div>
+          </div>
+        );
       }
-    }
+    };
 
     return (
       <div className="blog-container">{contentManager()}</div>
