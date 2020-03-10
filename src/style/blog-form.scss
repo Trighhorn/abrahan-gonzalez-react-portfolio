@@ -11,6 +11,11 @@
     background-color: $mint;
     color: $offwhite;
     transition: 0.5s ease-in-out;
+    border-radius: 5px;
+    // border: 1px solid $grey;
+    border: transparent;
+    height: 50px;
+    font-size: 1.5em;
   
     &:hover {
       background-color: $dark-mint;

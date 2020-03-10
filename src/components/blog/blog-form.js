@@ -152,12 +152,7 @@ export default class BlogForm extends Component {
             <div className="dz-message">Featured Image</div>
           </DropzoneComponent>
         </div>
-        <input
-          className="submit-btn"
-          type="submit"
-          value="Save"
-          onSubmit={this.handleSubmit}
-        />
+        <button className="submit-btn">Save</button>
       </form>
     );
   }
