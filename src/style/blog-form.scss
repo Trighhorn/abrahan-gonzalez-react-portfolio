@@ -10,14 +10,16 @@
   .submit-btn{
     background-color: $mint;
     color: $offwhite;
-
+    transition: 0.5s ease-in-out;
+  
     &:hover {
       background-color: $dark-mint;
     }
-    .image-uploaders {
-      @include base-grid();
-      grid-template-columns: 200px;
-    }
   }
+}
 
+
+.image-uploaders {
+  @include base-grid();
+  grid-template-columns: 200px;
 }

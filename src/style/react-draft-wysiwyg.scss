@@ -239,7 +239,7 @@
   padding: 0 10px 5px;
 }
 .rdw-colorpicker-modal-style-label-active {
-  border-bottom: 2px solid #0a66b7;
+  border-bottom: 2px solid $mint;
 }
 .rdw-colorpicker-modal-options {
   margin: 5px auto;
@@ -397,7 +397,7 @@
   border: 1px solid #f1f1f1;
   margin-top: 5px;
   background: #6eb8d4;
-  border-bottom: 2px solid #0a66b7;
+  border-bottom: 2px solid $mint;
 }
 .rdw-embedded-modal-link-section {
   display: flex;
@@ -581,7 +581,7 @@
 }
 .rdw-image-modal-header-label-highlighted {
   background: #6eb8d4;
-  border-bottom: 2px solid #0a66b7;
+  border-bottom: 2px solid $mint;
 }
 .rdw-image-modal-upload-option {
   width: 100%;
@@ -599,7 +599,7 @@
   padding: 9px 0;
 }
 .rdw-image-modal-upload-option-highlighted {
-  outline: 2px dashed #0a66b7;
+  outline: 2px dashed $mint;
 }
 .rdw-image-modal-upload-option-label {
   cursor: pointer;
