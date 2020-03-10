@@ -44,9 +44,3 @@ export default class PortfolioItem extends Component {
     )
   }
 }
-
-    // Datat ill need:
-    // bg img: thumb_image_url
-    // logo
-    // desc: description
-    // id: id 

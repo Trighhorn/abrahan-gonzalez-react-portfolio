@@ -24,18 +24,17 @@ export default class BlogForm extends Component {
     this.componentConfig = this.componentConfig.bind(this);
     this.djsConfig = this.djsConfig.bind(this);
     this.handleFeaturedImageDrop = this.handleFeaturedImageDrop.bind(this);
-  
+
     this.featuredImageRef = React.createRef();
   }
 
-
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.editMode) {
       this.setState({
         id: this.props.blog.id,
         title: this.props.blog.title,
         blog_status: this.props.blog.blog_status
-      })
+      });
     }
   }
 
@@ -161,14 +160,24 @@ export default class BlogForm extends Component {
           />
         </div>
         <div className="image-uploaders">
-          <DropzoneComponent
-            ref={this.featuredImageRef}
-            config={this.componentConfig()}
-            djsConfig={this.djsConfig()}
-            eventHandlers={this.handleFeaturedImageDrop()}
-          >
-            <div className="dz-message">Featured Image</div>
-          </DropzoneComponent>
+          {this.props.blog.featured_image_url && this.props.editMode ? (
+             <div className="image-upload-wrapper">
+             <img src={this.props.blog.featured_image_url} />
+
+             <div className="image-removal-link">
+               <a>Remove file</a>
+             </div>
+           </div>
+          ) : (
+            <DropzoneComponent
+              ref={this.featuredImageRef}
+              config={this.componentConfig()}
+              djsConfig={this.djsConfig()}
+              eventHandlers={this.handleFeaturedImageDrop()}
+            >
+              <div className="dz-message">Featured Image</div>
+            </DropzoneComponent>
+          )}
         </div>
         <button className="submit-btn">Save</button>
       </form>
